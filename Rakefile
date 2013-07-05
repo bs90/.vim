@@ -3,6 +3,7 @@ require 'fileutils'
 
 task :setup => [
   :'setup:check',    # Ensure we're in ~/.vim
+  :'setup:get_vundle',
   :'setup:vimrc',    # Make a symlink to ~/.vimrc
   :'setup:_after'
 ]
@@ -19,6 +20,12 @@ namespace :setup do
       status "Note: This repo must be cloned into ~/.vim."
       exit
     end
+  end
+
+  task :get_vundle do
+    `rm -rf ~/.vim/bundle/vundle`
+    status "Removed the old vundle and clone new one"
+    `mkdir ~/.vim/bundle/vundle && git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle --recursive`
   end
 
   task :vimrc do
