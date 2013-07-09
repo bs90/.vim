@@ -4,6 +4,6 @@ How to run:
 
 - cd to .vim
 
-- rake setup
+- `rake setup`
 
-- Start vim, run command :BundleInstall
+- Start vim, run command `:BundleInstall`
